@@ -40,4 +40,4 @@ class MockOpenIDConnect(CustomOpenIDConnect):
         return {'preferred_username': 'mockuser',
                 'email': 'mockuser@example.com',
                 'sub': '1234567890'
-               }
+                }

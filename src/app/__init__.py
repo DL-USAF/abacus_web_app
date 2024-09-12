@@ -22,8 +22,8 @@ oidc = auth_service.init_oidc(app)
 
 
 @app.context_processor
-def inject_oidc(): 
-    return {'oidc':oidc}
+def inject_oidc():
+    return {'oidc': oidc}
 
 
 def create_app():
