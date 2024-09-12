@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Query Ran</h1>
+<ul>
+    <li><strong>Query Name:</strong> {{ query_name or 'N/A' }}</li>
+    <li><strong>Query Text:</strong> {{ query_text }}</li>
+    <li><strong>Selected Auths:</strong>
+        {% if selected_auths %}
+            {{ selected_auths | join(', ') }}
+        {% else %}
+            None
+        {% endif %}
+    </li>
+    <li><strong>Data Type:</strong> {{ data_type or 'N/A' }}</li>
+    <li><strong>Output Location:</strong> {{ output_location }}</li>
+    <li><strong>Decode Raw Data:</strong> {{ 'Yes' if decode_raw_data else 'No' }}</li>
+</ul>
+{% endblock %}

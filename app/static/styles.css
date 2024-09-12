@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E4DFDA;
+}
+
+header {
+    background-color: #48A9A6;
+    padding: 1em;
+    text-align: left;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    padding: 2em;
+}
+
+.content h1 {
+    text-align: center;
+}
+
+/* Form Styles */
+.query-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.query-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.query-form .form-group {
+    margin-bottom: 15px;
+}
+
+.query-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.query-form input[type="text"],
+.query-form textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.query-form textarea {
+    resize: vertical;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.button-item {
+    margin: 10px;
+}
+
+.button-item:first-child {
+    margin-left: 0px;
+}
+
+.auth-button {
+    padding: 10px 20px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+}
+
+.auth-button.selected {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.auth-button:hover {
+    background-color: #bbb;
+}
+
+.auth-button.selected:hover {
+    background-color: #388e3c;
+}
+
+.query-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.query-form button[type="submit"]:hover {
+    background-color: #555;
+}
