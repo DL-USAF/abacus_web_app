@@ -23,6 +23,6 @@ jobs:
         # pycodestyle $(git ls-files '*.py') --config .config/pycodestyle
     - name: Package the project
       run: |
-        python3 -m pip install -upgrade build
+        python3 -m pip install --upgrade build
         python3 -m build
         ls dist
