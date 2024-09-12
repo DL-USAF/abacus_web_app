@@ -20,7 +20,7 @@ jobs:
         pip install pycodestyle
     - name: Analysing the code with pylint
       run: |
-        pycodestyle $(git ls-files '*.py')
+        pycodestyle $(git ls-files '*.py') --config .config/pycodestyle
     - name: Package the project
       run: |
         python3 -m pip install -upgrade build
