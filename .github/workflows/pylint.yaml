@@ -1,4 +1,4 @@
-name: Pylint
+name: Package
 
 on: [push]
 
@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ["3.10", "3.11"]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
@@ -21,3 +21,8 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pycodestyle $(git ls-files '*.py')
+    - name: Package the project
+      run: |
+        python3 -m pip install -upgrade build
+        python3 -m build
+        ls dist
