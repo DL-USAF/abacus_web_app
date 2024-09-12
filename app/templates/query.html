@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Query Page</h1>
+<form method="post" action="{{ url_for('main.query') }}" class="query-form">
+    <!-- Query Name -->
+    <div class="form-group">
+        <label for="query_name">Query Name (Optional):</label>
+        <input type="text" id="query_name" name="query_name" placeholder="Enter query name">
+    </div>
+
+    <!-- Query -->
+    <div class="form-group">
+        <label for="query">Query:</label>
+        <textarea id="query" name="query" placeholder="Enter your query" required></textarea>
+    </div>
+
+    <!-- Auths -->
+    <div class="form-group">
+        <label>Auths:</label>
+        <div class="button-container">
+            {% for auth in auths %}
+            <div class="button-item">
+                <button type="button" class="auth-button" data-auth="{{ auth }}">{{ auth }}</button>
+                <input type="hidden" name="auths" value="" class="auth-input">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Data Type -->
+    <div class="form-group">
+        <label for="data_type">Data Type (Optional, comma-delimited):</label>
+        <input type="text" id="data_type" name="data_type" placeholder="type1, type2">
+    </div>
+
+    <!-- Output Location -->
+    <div class="form-group">
+        <label for="output_location">Output Location (Optional):</label>
+        <input type="text" id="output_location" name="output_location" placeholder="Enter output location">
+    </div>
+
+    <!-- Decode Raw Data -->
+    <div class="form-group">
+        <button type="button" class="auth-button" data-auth="decode_raw_data">Decode Raw Data</button>
+        <input type="hidden" name="decode_raw_data" value="" class="auth-input">
+    </div>
+
+    <!-- Execute Query Button -->
+    <button type="submit">Execute Query</button>
+</form>
+
+<script>
+    document.querySelectorAll('.auth-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const input = this.nextElementSibling;
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                input.value = ''; // Empty hidden input value
+            } else {
+                this.classList.add('selected');
+                input.value = this.getAttribute('data-auth'); // Set hidden input value
+            }
+        });
+    });
+</script>
+{% endblock %}
