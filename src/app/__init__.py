@@ -20,9 +20,11 @@ app.config['OIDC_CLIENT_SECRETS'] = auth_service.get_client_secrets()
 
 oidc = auth_service.init_oidc(app)
 
+
 @app.context_processor
 def inject_oidc():
-    return {'oidc':oidc}
+    return {'oidc': oidc}
+
 
 def create_app():
     from app.routes import main

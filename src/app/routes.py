@@ -3,19 +3,23 @@ from app import oidc
 
 main = Blueprint('main', __name__)
 
+
 @main.route('/')
 def index():
     return render_template('index.html')
+
 
 @main.route('/login')
 @oidc.require_login
 def login():
     return redirect(url_for('main.dashboard'))
 
+
 @main.route('/dashboard')
 @oidc.require_login
 def dashboard():
     return render_template('dashboard.html')
+
 
 @main.route('/query', methods=['GET', 'POST'])
 @oidc.require_login
@@ -39,10 +43,12 @@ def query():
     else:
         return render_template('query.html', auths=auths)
 
+
 @main.route('/upload')
 @oidc.require_login
 def upload():
     return render_template('upload.html')
+
 
 @main.route('/logout')
 def logout():

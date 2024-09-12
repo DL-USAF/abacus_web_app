@@ -1,5 +1,6 @@
 from .AuthServiceBase import AuthService
 
+
 class KeycloakAuthService(AuthService):
     def get_oidc_config(self):
         return {
@@ -11,17 +12,18 @@ class KeycloakAuthService(AuthService):
         }
 
     def get_client_secrets(self):
+        base_url = "http://localhost:8080/realms"
         return {
             "web": {
-                "issuer": "http://localhost:8080/realms/external",
-                "auth_uri": "http://localhost:8080/realms/external/protocol/openid-connect/auth",
+                "issuer": f"{base_url}/external",
+                "auth_uri": f"{base_url}/external/protocol/openid-connect/auth",
                 "client_id": "flask-app",
                 "client_secret": "zlZq3WjKZUtRbQPTRMoB7FW91xSsC0tp",
                 "redirect_uris": [
                     "http://localhost:5000/*"
                 ],
-                "userinfo_uri": "http://localhost:8080/realms/external/protocol/openid-connect/userinfo", 
-                "token_uri": "http://localhost:8080/realms/external/protocol/openid-connect/token",
-                "token_introspection_uri": "http://localhost:8080/realms/external/protocol/openid-connect/token/introspect"
+                "userinfo_uri": f"{base_url}/external/protocol/openid-connect/userinfo",
+                "token_uri": f"{base_url}/external/protocol/openid-connect/token",
+                "token_introspection_uri": f"{base_url}/external/protocol/openid-connect/token/introspect"
             }
         }
