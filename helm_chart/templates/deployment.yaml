@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.metadata.name }}
+  {{- with .Values.labels }}
+  labels: 
+    {{- toYaml . | nindent 4 }}
+  {{ end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector: 
+    {{- with .Values.labels }}
+    matchLabels:
+      {{- toYaml . | nindent 6 }}
+    {{ end }}
+  template:
+    metadata:
+      {{- with .Values.labels }}
+      labels: 
+        {{- toYaml . | nindent 8 }}
+      {{ end }}
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Values.config.name }}
+      containers:
+        - name: abacus-web-app
+          image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: AUTH_SERVICE
+              value: {{ .Values.env.auth_service }}
+          volumeMounts:
+            - name: config
+              mountPath: /configs

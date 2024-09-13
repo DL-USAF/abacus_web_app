@@ -1,4 +1,7 @@
+import json
+import os
 from .AuthServiceBase import AuthService
+from . import logger
 
 
 class KeycloakAuthService(AuthService):
@@ -12,18 +15,24 @@ class KeycloakAuthService(AuthService):
         }
 
     def get_client_secrets(self):
-        base_url = "http://localhost:8080/realms"
-        return {
-            "web": {
-                "issuer": f"{base_url}/external",
-                "auth_uri": f"{base_url}/external/protocol/openid-connect/auth",
-                "client_id": "flask-app",
-                "client_secret": "zlZq3WjKZUtRbQPTRMoB7FW91xSsC0tp",
-                "redirect_uris": [
-                    "http://localhost:5000/*"
-                ],
-                "userinfo_uri": f"{base_url}/external/protocol/openid-connect/userinfo",
-                "token_uri": f"{base_url}/external/protocol/openid-connect/token",
-                "token_introspection_uri": f"{base_url}/external/protocol/openid-connect/token/introspect"
+        logger.info("Setting up the client_secrets for Keycloak.")
+        config_file = os.path.join(os.getcwd(), "configs/keycloak_config.json")
+        logger.info(config_file)
+        if os.path.exists(config_file):
+            return self.read_config_file(config_file)
+        else:
+            base_url = "http://localhost:8080/realms"
+            return {
+                "web": {
+                    "issuer": f"{base_url}/external",
+                    "auth_uri": f"{base_url}/external/protocol/openid-connect/auth",
+                    "client_id": "flask-app",
+                    "client_secret": "zlZq3WjKZUtRbQPTRMoB7FW91xSsC0tp",
+                    "redirect_uris": [
+                        "http://localhost:5000/*"
+                    ],
+                    "userinfo_uri": f"{base_url}/external/protocol/openid-connect/userinfo",
+                    "token_uri": f"{base_url}/external/protocol/openid-connect/token",
+                    "token_introspection_uri": f"{base_url}/external/protocol/openid-connect/token/introspect"
+                }
             }
-        }
