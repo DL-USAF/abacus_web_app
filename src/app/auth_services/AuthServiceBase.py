@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 from flask_oidc import OpenIDConnect
 from . import logger
 
+
 class AuthService(ABC):
     def __init__(self):
         pass

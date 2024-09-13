@@ -5,7 +5,8 @@ def create_logger(name: str, log_file: str):
     logger = logging.getLogger(name)
     if not logger.hasHandlers():
         formatter = logging.Formatter(
-            "Time:%(asctime)s\nLogger:%(name)s\nFile:%(filename)s:%(lineno)d\nLog Level:%(levelname)s\nMessage:%(message)s\n")
+            "Time:%(asctime)s\nLogger:%(name)s\nFile:%(filename)s:%(lineno)d\n"
+            + "Log Level:%(levelname)s\nMessage:%(message)s\n")
         fh = logging.FileHandler(log_file)
         fh.setLevel(level=logging.DEBUG)
         fh.setFormatter(formatter)
