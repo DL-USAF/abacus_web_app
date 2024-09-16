@@ -1,0 +1,22 @@
+metadata:
+  name: abacus-web-app
+
+labels:
+  testing: "true"
+
+replicaCount: 1
+
+image:
+  registry: dwvregistry.azurecr.us
+  name: abacus_web_app
+  tag: latest
+  pullPolicy: Always
+
+env: 
+  auth_service: KeycloakAuthService
+
+config:
+  name: abacus-web-app-config
+  realm: external
+  client_id: external-client
+  client_secret:

@@ -1,0 +1,2 @@
+helm lint .
+helm package .
