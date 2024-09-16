@@ -30,8 +30,7 @@ class CustomOpenIDConnect(OpenIDConnect):
 
 
 def load_auth_service():
-    # auth_service = os.getenv('AUTH_SERVICE', 'MockAuthService')
-    auth_service = 'DexAuthService'
+    auth_service = os.getenv('AUTH_SERVICE', 'MockAuthService')
 
     try:
         module = importlib.import_module(f'app.auth_services.{auth_service}')

@@ -5,37 +5,76 @@ body {
     background-color: #E4DFDA;
 }
 
+/*#region Navbar */
 header {
     background-color: #48A9A6;
-    padding: 1em;
-    text-align: left;
 }
 
-header nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px; 
 }
 
-header nav ul li {
-    display: inline;
-    margin-right: 1em;
+.navbar-left,
+.navbar-center,
+.navbar-right {
+    display: flex;
+    align-items: center;
 }
 
-header nav ul li a {
-    color: white;
+.navbar-left a,
+.navbar-right a {
+    color: white; 
     text-decoration: none;
+    margin-right: 15px; 
+    padding: 1em;
 }
+
+.navbar-left a:hover,
+.navbar-right a:hover {
+    background-color: #3d918e;
+}
+
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    flex: 1; 
+    justify-content: center;
+}
+
+.navbar-right {
+    justify-content: flex-end;
+}
+
+.warning-header {
+    background-color: #c1666B;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #E65100;
+}
+/*#endregion */
 
 .content {
     padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .content h1 {
     text-align: center;
 }
 
-/* Form Styles */
+/*#region Query Form */
 .query-form {
     max-width: 600px;
     margin: 0 auto;
@@ -94,7 +133,7 @@ header nav ul li a {
 }
 
 .auth-button.selected {
-    background-color: #4caf50;
+    background-color: #48A9A6;
     color: #fff;
 }
 
@@ -103,7 +142,42 @@ header nav ul li a {
 }
 
 .auth-button.selected:hover {
-    background-color: #388e3c;
+    background-color: #3d918e;
+}
+
+.collapsible-header {
+    background-color: transparent;
+    border: none;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #ccc;
+}
+
+.collapsible-header:focus {
+    outline: none;
+}
+
+.collapsible-header:hover {
+    color: #007bff;
+}
+
+.collapsible-section {
+    display: none; 
+    margin-top: 15px;
+}
+
+#arrow {
+    float: right;
+}
+
+.query-form .form-group {
+    margin-bottom: 15px;
 }
 
 .query-form button[type="submit"] {
@@ -119,3 +193,4 @@ header nav ul li a {
 .query-form button[type="submit"]:hover {
     background-color: #555;
 }
+/*#endregion */

@@ -8,17 +8,26 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('main.index') }}">Home</a></li>
-                {% if oidc.user_loggedin %}
-                <li><a href="{{ url_for('main.upload') }}">Upload</a></li>
-                <li><a href="{{ url_for('main.query') }}">Query</a></li>
-                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
-                {% else %}
-                <li><a href="{{ url_for('main.login') }}">Login</a></li>
-                {% endif %}
-            </ul>
+        <nav class="navbar">
+                <div class="navbar-left">
+                    <a href="{{ url_for('main.index') }}">Home</a>
+                    {% if oidc.user_loggedin %}
+                    <a href="{{ url_for('main.upload') }}">Upload</a>
+                    <a href="{{ url_for('main.query') }}">Query</a>
+                    {% endif %}
+                </div>
+                <div class="navbar-center">
+                    {% if mocking_datawave_cli %}
+                    <span class="warning-header" title="Abacus' datawave_cli was not found. Any interactions will be faked!">USING MOCKED DATAWAVE CONNECTION</span>
+                    {% endif %}
+                </div>
+                <div class="navbar-right">
+                    {% if oidc.user_loggedin %}
+                    <a href="{{ url_for('main.logout') }}">Logout</a>
+                    {% else %}
+                    <a href="{{ url_for('main.login') }}">Login</a>
+                    {% endif %}
+                </div>
         </nav>
     </header>
     <div class="content">
