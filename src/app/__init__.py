@@ -23,7 +23,7 @@ oidc = auth_service.init_oidc(app)
 
 
 @app.context_processor
-def inject_oidc():
+def inject_data():
     mock_datawave = find_spec('datawave_cli') is None
 
     return {'oidc': oidc, 'mocking_datawave_cli': mock_datawave}

@@ -1,0 +1,31 @@
+{
+  "proxiedUsers": [
+    {
+      "name": "st=utah, l=hill afb, cn=ladrian.waxillium.a.2, ou=abacus, o=eddge, c=us<cn=abacus intermediate ca, ou=abacus, o=eddge, c=us>",
+      "dn": {
+        "subjectDN": "st=utah, l=hill afb, cn=ladrian.waxillium.a.2, ou=abacus, o=eddge, c=us",
+        "issuerDN": "cn=abacus intermediate ca, ou=abacus, o=eddge, c=us"
+      },
+      "userType": "USER",
+      "auths": [
+        "U",
+        "C",
+        "S",
+        "TS",
+        "CUI",
+        "HVSACO",
+        "NF",
+        "SAR-DOD:S:\ud83c\udf51",
+        "SAR-DOD:S:Ghost_Bloods",
+        "USA"
+      ],
+      "roles": [
+        "AuthorizedUser"
+      ],
+      "roleToAuthMapping": {},
+      "creationTime": 1726517641489,
+      "expirationTime": -1
+    }
+  ],
+  "creationTime": 1726517641489
+}

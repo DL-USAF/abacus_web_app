@@ -1,4 +1,5 @@
 import click
+import json
 
 
 @click.group
@@ -45,5 +46,6 @@ def query(url, ip, namespace, log_level, key, cert, query, query_name, auths, fi
 @main.command
 @common_options
 def authorization(**kwargs):
-    res = {'proxied_users': [{'auths': ['FOO', 'BAR', 'PUBLIC', 'PRIVATE']}]}
+    with open('mock/datawave_cli/sample_authorization.json', 'r') as f:
+        res = json.load(f)
     return (res)

@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, redirect, url_for, request
+from flask import render_template, Blueprint, redirect, url_for, request, flash
 from app import oidc
 from click.testing import CliRunner
 from uuid import uuid4
@@ -33,7 +33,7 @@ def dashboard():
 def query():
     cmd = 'authorization -c [PLACEHOLDER] -k [PLACEHOLDER]'.split(' ')
     whoami = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
-    auths = whoami['proxied_users'][0]['auths']
+    auths = whoami['proxiedUsers'][0]['auths']
 
     return render_template('query.html', auths=auths)
 
@@ -45,6 +45,12 @@ def query_results():
         query_name = request.form.get('query_name') or uuid4()
         query_text = request.form.get('query')
         selected_auths = [auth for auth in request.form.getlist('auths') if auth]
+
+        if not selected_auths:
+            flash('Please select at least one Auth option.', 'error')
+            return redirect(url_for('main.query'))
+
+
         data_type = request.form.get('data_type')
         decode_raw_data = bool(request.form.get('decode_raw_data'))
 
