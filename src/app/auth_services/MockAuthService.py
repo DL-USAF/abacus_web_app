@@ -2,6 +2,7 @@ from .AuthServiceBase import AuthService, CustomOpenIDConnect
 from flask import session
 from datetime import datetime, timedelta
 
+
 class MockAuthService(AuthService):
     def get_oidc_config(self):
         """Returns the OIDC configuration to be used in app.config.update"""
@@ -18,7 +19,7 @@ class MockAuthService(AuthService):
                 "redirect_uris": [
                     "http://localhost:5000/*"
                 ],
-                "userinfo_uri": "http://localhost:5000/mock/userinfo", 
+                "userinfo_uri": "http://localhost:5000/mock/userinfo",
                 "token_uri": "http://localhost:5000/mock/token",
                 "token_introspection_uri": "http://localhost:5000/mock/introspect"
             }

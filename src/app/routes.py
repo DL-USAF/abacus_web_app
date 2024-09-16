@@ -66,6 +66,7 @@ def query_results():
         return render_template('query_result.html', no_query=True)
 
 
+
 @main.route('/upload')
 @oidc.require_login
 def upload():

@@ -3,6 +3,7 @@ import importlib
 from abc import ABC, abstractmethod
 from flask_oidc import OpenIDConnect
 
+
 class AuthService(ABC):
     @abstractmethod
     def get_oidc_config(self):

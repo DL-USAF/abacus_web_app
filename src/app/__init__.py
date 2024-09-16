@@ -21,6 +21,7 @@ app.config['OIDC_CLIENT_SECRETS'] = auth_service.get_client_secrets()
 
 oidc = auth_service.init_oidc(app)
 
+
 @app.context_processor
 def inject_oidc():
     mock_datawave = find_spec('datawave_cli') is None

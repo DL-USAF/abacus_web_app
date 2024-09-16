@@ -1,5 +1,6 @@
 from .AuthServiceBase import AuthService
 
+
 class DexAuthService(AuthService):
     def get_oidc_config(self):
         return {
@@ -18,7 +19,7 @@ class DexAuthService(AuthService):
                 "redirect_uris": [
                     "http://localhost:5000/*"
                 ],
-                "userinfo_uri": "http://localhost:5556/userinfo", 
+                "userinfo_uri": "http://localhost:5556/userinfo",
                 "token_uri": "http://localhost:5556/token",
                 "token_introspection_uri": "http://localhost:5556/token/introspect"
             }
