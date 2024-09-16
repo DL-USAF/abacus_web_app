@@ -1,4 +1,5 @@
 from .AuthServiceBase import AuthService, CustomOpenIDConnect
+from . import logger
 from flask import session
 from datetime import datetime, timedelta
 
@@ -10,6 +11,7 @@ class MockAuthService(AuthService):
 
     def get_client_secrets(self):
         """Returns the client secrets as a dictionary"""
+        logger.info("Getting the client_secrets for Mock.")
         return {
             "web": {
                 "issuer": "http://localhost:5000/mock",

@@ -1,10 +1,16 @@
-import os
 import importlib
+import json
+import os
+from pathlib import Path
 from abc import ABC, abstractmethod
 from flask_oidc import OpenIDConnect
+from . import logger
 
 
 class AuthService(ABC):
+    def __init__(self):
+        pass
+
     @abstractmethod
     def get_oidc_config(self):
         """Returns the OIDC configuration to be used in app.config.update."""
@@ -18,6 +24,12 @@ class AuthService(ABC):
     def init_oidc(self, app):
         """Initializes the OIDC object"""
         return CustomOpenIDConnect(app, client_secrets=self.get_client_secrets())
+
+    def read_config_file(self, auth_config_file: str):
+        """Reads in the configuration file."""
+        logger.debug("Auth Config file found!")
+        with open(auth_config_file, 'r') as f:
+            return json.load(f)
 
 
 class CustomOpenIDConnect(OpenIDConnect):
