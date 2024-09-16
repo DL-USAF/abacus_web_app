@@ -14,7 +14,8 @@ dependencies = [
     "flask",
     "flask_oidc",
     "requests",
-    "pandas"
+    "pandas",
+    "click"
 ]
 
 [project.urls]

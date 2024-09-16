@@ -2,13 +2,7 @@
 
 {% block content %}
 <h1>Query Page</h1>
-<form method="post" action="{{ url_for('main.query') }}" class="query-form">
-    <!-- Query Name -->
-    <div class="form-group">
-        <label for="query_name">Query Name (Optional):</label>
-        <input type="text" id="query_name" name="query_name" placeholder="Enter query name">
-    </div>
-
+<form method="post" action="{{ url_for('main.query_results') }}" class="query-form" onsubmit="return validateAuthSelection();">
     <!-- Query -->
     <div class="form-group">
         <label for="query">Query:</label>
@@ -26,24 +20,34 @@
             </div>
             {% endfor %}
         </div>
+        <p id="authError" class='warning-header' style="display: none;">Please select at least one Auth option.</p>
     </div>
 
-    <!-- Data Type -->
+    <!-- Collapsible Section for Optional Fields -->    
     <div class="form-group">
-        <label for="data_type">Data Type (Optional, comma-delimited):</label>
-        <input type="text" id="data_type" name="data_type" placeholder="type1, type2">
+        <button type="button" id="toggleOptionalFields" class="collapsible-header">
+            Optional Fields <span id="arrow">▶</span>
+        </button>
     </div>
 
-    <!-- Output Location -->
-    <div class="form-group">
-        <label for="output_location">Output Location (Optional):</label>
-        <input type="text" id="output_location" name="output_location" placeholder="Enter output location">
-    </div>
-
-    <!-- Decode Raw Data -->
-    <div class="form-group">
-        <button type="button" class="auth-button" data-auth="decode_raw_data">Decode Raw Data</button>
-        <input type="hidden" name="decode_raw_data" value="" class="auth-input">
+    <div id="optionalFields" class="collapsible-section">
+        <!-- Query Name (Optional) -->
+        <div class="form-group">
+            <label for="query_name">Query Name (Optional):</label>
+            <input type="text" id="query_name" name="query_name" placeholder="Enter query name">
+        </div>
+        
+        <!-- Data Type (Optional) -->
+        <div class="form-group">
+            <label for="data_type">Data Type (Optional, comma-delimited):</label>
+            <input type="text" id="data_type" name="data_type" placeholder="e.g., type1, type2">
+        </div>
+        
+        <!-- Decode Raw Data (optional) -->
+        <div class="form-group">
+            <button type="button" class="auth-button" data-auth="decode_raw_data">Decode Raw Data</button>
+            <input type="hidden" name="decode_raw_data" value="" class="auth-input">
+        </div>
     </div>
 
     <!-- Execute Query Button -->
@@ -63,5 +67,37 @@
             }
         });
     });
+    
+    document.getElementById('toggleOptionalFields').addEventListener('click', function() {
+        const optionalFields = document.getElementById('optionalFields');
+        const arrow = document.getElementById('arrow');
+        
+        if (optionalFields.style.display === 'none' || optionalFields.style.display === '') {
+            optionalFields.style.display = 'block';
+            arrow.textContent = '▼';
+        } else {
+            optionalFields.style.display = 'none';
+            arrow.textContent = '▶';
+        }
+    });
+
+    function validateAuthSelection() {
+        const authInputs = document.querySelectorAll('.auth-input');
+        let atLeastOneSelected = false;
+        
+        authInputs.forEach(input => {
+            if (input.value) {
+                atLeastOneSelected = true;
+            }
+        });
+
+        if (!atLeastOneSelected) {
+            document.getElementById('authError').style.display = 'block';
+            return false; // Prevent form submission
+        } else {
+            document.getElementById('authError').style.display = 'none';
+            return true; // Allow form submission
+        }
+    }
 </script>
 {% endblock %}

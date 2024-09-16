@@ -1,7 +1,7 @@
 from .AuthServiceBase import AuthService, CustomOpenIDConnect
 from . import logger
 from flask import session
-from flask_oidc import OpenIDConnect
+from datetime import datetime, timedelta
 
 
 class MockAuthService(AuthService):
@@ -33,13 +33,32 @@ class MockAuthService(AuthService):
 
 
 class MockOpenIDConnect(CustomOpenIDConnect):
+    def __init__(self, *args, **kwargs):
+        super(MockOpenIDConnect, self).__init__(*args, **kwargs)
+        self.mock_user = {
+            "sub": "12345",
+            "email": "mockuser@example.com",
+            "name": "Mock User",
+        }
+        self.mock_token = {
+            "exp": datetime.now() + timedelta(days=365),
+            "id_token": "mock_id_token",
+        }
+
     @property
     def user_loggedin(self):
         session['oidc_auth_profile'] = self.user_getinfo(None)
         return True
 
+    def check_token_expiry(self):
+        session['oidc_auth_token'] = self.mock_token
+        return super(MockOpenIDConnect, self).check_token_expiry()
+
+    def ensure_active_token(self, token=None):
+        return True
+
+    def token_is_valid(self, token=None):
+        return True
+
     def user_getinfo(self, fields):
-        return {'preferred_username': 'mockuser',
-                'email': 'mockuser@example.com',
-                'sub': '1234567890'
-                }
+        return self.mock_user
