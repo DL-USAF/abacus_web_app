@@ -1,8 +1,5 @@
 import click
-import sys
 
-import logging
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 @click.group
 @click.option('-s', '--suppress-warning', is_flag=True, hidden=True,
@@ -33,21 +30,20 @@ def common_options(f):
 @click.option("-d", "--decode-raw", is_flag=True)
 def query(url, ip, namespace, log_level, key, cert, query, query_name, auths, filter, output, html, decode_raw):
     print('in query')
-    return \
-f"""
-<ul style="list-style-type: none;">
-    <li><strong>Query Name:</strong> {query_name}</li>
-    <li><strong>Query Text:</strong> {query}</li>
-    <li><strong>Selected Auths:</strong> {auths}</li>
-    <li><strong>Data Type:</strong> {"All" if not filter else filter}</li>
-    <li><strong>Output Location:</strong> {output}</li>
-    <li><strong>Decode Raw Data:</strong> {decode_raw}</li>
-</ul>
-"""
+    return f"""
+    <ul style="list-style-type: none;">
+        <li><strong>Query Name:</strong> {query_name}</li>
+        <li><strong>Query Text:</strong> {query}</li>
+        <li><strong>Selected Auths:</strong> {auths}</li>
+        <li><strong>Data Type:</strong> {"All" if not filter else filter}</li>
+        <li><strong>Output Location:</strong> {output}</li>
+        <li><strong>Decode Raw Data:</strong> {decode_raw}</li>
+    </ul>
+    """
 
 
 @main.command
 @common_options
 def authorization(**kwargs):
-    res = {'proxied_users': [{'auths':['FOO', 'BAR', 'PUBLIC', 'PRIVATE']}]}
+    res = {'proxied_users': [{'auths': ['FOO', 'BAR', 'PUBLIC', 'PRIVATE']}]}
     return (res)

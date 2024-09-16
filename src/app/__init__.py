@@ -25,8 +25,9 @@ oidc = auth_service.init_oidc(app)
 @app.context_processor
 def inject_oidc():
     mock_datawave = find_spec('datawave_cli') is None
-    
-    return {'oidc':oidc, 'mocking_datawave_cli':mock_datawave}
+
+    return {'oidc': oidc, 'mocking_datawave_cli': mock_datawave}
+
 
 def create_app():
     from app.routes import main

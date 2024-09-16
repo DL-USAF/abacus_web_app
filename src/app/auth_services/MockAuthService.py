@@ -30,7 +30,7 @@ class MockAuthService(AuthService):
         return MockOpenIDConnect(app, self.get_client_secrets())
 
 
-class MockOpenIDConnect(CustomOpenIDConnect):    
+class MockOpenIDConnect(CustomOpenIDConnect):
     def __init__(self, *args, **kwargs):
         super(MockOpenIDConnect, self).__init__(*args, **kwargs)
         self.mock_user = {
@@ -54,7 +54,7 @@ class MockOpenIDConnect(CustomOpenIDConnect):
 
     def ensure_active_token(self, token=None):
         return True
-    
+
     def token_is_valid(self, token=None):
         return True
 

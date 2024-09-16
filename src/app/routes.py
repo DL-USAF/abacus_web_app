@@ -40,7 +40,7 @@ def query():
 
 @main.route('/query_results', methods=['GET', 'POST'])
 @oidc.require_login
-def query_results():    
+def query_results():
     if request.method == 'POST':
         query_name = request.form.get('query_name') or uuid4()
         query_text = request.form.get('query')
@@ -49,22 +49,22 @@ def query_results():
         decode_raw_data = bool(request.form.get('decode_raw_data'))
 
         output_location = f'/tmp/{query_name}/results.json'
-        cmd = ['query',
-               '-c', 'PLACEHOLDER', '-k', 'PLACEHOLDER',
-               '-q', query_text,
-               '--query-name', f'{query_name}',
-               '--auths', ",".join(selected_auths),
-               f'-f {data_type}' if data_type else '',
-               f'{"-d" if decode_raw_data else ""}',
-               '-o', output_location, '--html'
-              ]
+        cmd = [
+            'query',
+            '-c', 'PLACEHOLDER', '-k', 'PLACEHOLDER',
+            '-q', query_text,
+            '--query-name', f'{query_name}',
+            '--auths', ",".join(selected_auths),
+            f'-f {data_type}' if data_type else '',
+            f'{"-d" if decode_raw_data else ""}',
+            '-o', output_location, '--html'
+        ]
         cmd = list(filter(lambda item: item, cmd))
         output_html = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
-        
+
         return render_template('query_result.html', output_location=output_location, output_html=output_html)
     else:
         return render_template('query_result.html', no_query=True)
-
 
 
 @main.route('/upload')
