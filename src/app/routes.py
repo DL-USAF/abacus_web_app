@@ -50,7 +50,6 @@ def query_results():
             flash('Please select at least one Auth option.', 'error')
             return redirect(url_for('main.query'))
 
-
         data_type = request.form.get('data_type')
         decode_raw_data = bool(request.form.get('decode_raw_data'))
 
