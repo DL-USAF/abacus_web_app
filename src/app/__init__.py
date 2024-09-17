@@ -1,11 +1,11 @@
-import logging
 from importlib.util import find_spec
 
 from flask import Flask
 
 from app.auth_services.AuthServiceBase import load_auth_service
+from .utils.create_logger import create_logger
 
-logging.basicConfig(level=logging.DEBUG)
+routes_logger = create_logger("abacus_web_app_views", "logs/routes_log.log")
 
 auth_service = load_auth_service()
 
