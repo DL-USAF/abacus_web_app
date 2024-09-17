@@ -1,7 +1,9 @@
-from flask import render_template, Blueprint, redirect, url_for, request, flash
-from app import oidc, routes_logger
-from click.testing import CliRunner
 from uuid import uuid4
+
+from flask import render_template, Blueprint, redirect, url_for, request, flash
+from click.testing import CliRunner
+
+from app import oidc, routes_logger
 
 try:
     from datawave_cli.main import main as dwv_entry_point
