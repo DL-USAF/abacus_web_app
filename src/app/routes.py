@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, redirect, url_for, request, flash
-from app import oidc
+from app import oidc, routes_logger
 from click.testing import CliRunner
 from uuid import uuid4
 
