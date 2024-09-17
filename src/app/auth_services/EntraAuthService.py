@@ -4,7 +4,8 @@ from .AuthServiceBase import AuthService
 from . import logger
 
 
-class KeycloakAuthService(AuthService):
+class EntraAuthService(AuthService):
+
     def get_oidc_config(self):
         return {
             'OIDC_ID_TOKEN_COOKIE_SECURE': False,
