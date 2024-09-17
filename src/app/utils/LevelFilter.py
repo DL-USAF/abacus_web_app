@@ -1,5 +1,6 @@
 from logging import Filter, INFO
 
+
 class LevelFilter(Filter):
     def __init__(self, level_cutoff: int):
         self.level_cutoff = level_cutoff
