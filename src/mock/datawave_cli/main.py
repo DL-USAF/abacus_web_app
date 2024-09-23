@@ -50,11 +50,11 @@ def authorization(**kwargs):
         res = json.load(f)
     return res
 
+
 @main.command
 @common_options
 @click.option("--auths", type=str, required=True)
-@click.option("-d", "--data-types", type=str,
-              help="The datatypes to filter for. This CAN be a comma delineated list with no spaces.")
+@click.option("-d", "--data-types", type=str)
 def dictionary(**kwargs):
     with open('mock/datawave_cli/sample_dict.json', 'r') as f:
         res = json.load(f)

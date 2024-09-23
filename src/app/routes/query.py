@@ -9,6 +9,7 @@ try:
 except Exception:
     from mock.datawave_cli.main import main as dwv_entry_point
 
+
 def route():
     cmd = 'authorization -c [PLACEHOLDER] -k [PLACEHOLDER]'.split(' ')
     whoami = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value

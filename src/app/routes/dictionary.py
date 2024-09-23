@@ -15,6 +15,8 @@ def route():
     auths = whoami['proxiedUsers'][0]['auths']
 
     data = ''
+    selected_auths = []
+    datatypes = ''
     if request.method == 'POST':
         selected_auths = [auth for auth in request.form.getlist('auths') if auth]
         datatypes = request.form.get('filter').replace(' ', '')
@@ -25,4 +27,5 @@ def route():
         routes_logger.info(f'Executing {cmd}')
         data = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
 
-    return render_template('dictionary.html', auths=auths, data=data)
+    selected_auths = {auth: auth in selected_auths for auth in auths}    
+    return render_template('dictionary.html', auths=selected_auths, data=data, dtypes=datatypes)

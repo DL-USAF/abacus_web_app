@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, redirect, url_for
 
-from app import oidc,routes
+from app import oidc, routes
 
 
 main = Blueprint('main', __name__)

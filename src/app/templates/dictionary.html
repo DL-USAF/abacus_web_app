@@ -7,10 +7,10 @@
     <div class="form-group">
         <label>Auths:</label>
         <div class="button-container">
-            {% for auth in auths %}
+            {% for auth, enabled in auths.items() %}
             <div class="button-item">
-                <button type="button" class="auth-button" data-auth="{{ auth }}">{{ auth }}</button>
-                <input type="hidden" name="auths" value="" class="auth-input">
+                <button type="button" class="auth-button {{ 'selected' if enabled else '' }}" data-auth="{{ auth }}">{{ auth }}</button>
+                <input type="hidden" name="auths" value="{{ auth if enabled else ''}}" class="auth-input">
             </div>
             {% endfor %}
         </div>
@@ -20,7 +20,7 @@
     <!-- Datatypes Filter-->
     <div class="form-group">
         <label for="filter">Filter dictionary by datatype(Optional):</label>
-        <input type="text" id="filter" name="filter" placeholder="datatype1,datatype2">
+        <input type="text" id="filter" name="filter" value="{{dtypes if dtypes else ''}}" placeholder="datatype1,datatype2">
     </div>
         
     <!-- Execute Query Button -->
