@@ -27,5 +27,5 @@ def route():
         routes_logger.info(f'Executing {cmd}')
         data = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
 
-    selected_auths = {auth: auth in selected_auths for auth in auths}    
+    selected_auths = {auth: auth in selected_auths for auth in auths}
     return render_template('dictionary.html', auths=selected_auths, data=data, dtypes=datatypes)
