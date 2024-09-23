@@ -20,7 +20,7 @@
     <!-- Datatypes Filter-->
     <div class="form-group">
         <label for="filter">Filter dictionary by datatype(Optional):</label>
-        <input type="text" id="filter" name="filter" value="{{dtypes if dtypes else ''}}" placeholder="datatype1,datatype2">
+        <input type="text" id="filter" name="filter" value="{{ dtypes if dtypes else '' }}" placeholder="datatype1,datatype2">
     </div>
         
     <!-- Execute Query Button -->
@@ -34,7 +34,7 @@
         <thead>
             <tr>
                 {% for header in data[0].keys() %}
-                <th>{{ header }}</th>
+                    <th>{{ header }}</th>
                 {% endfor %}
             </tr>
         </thead>
