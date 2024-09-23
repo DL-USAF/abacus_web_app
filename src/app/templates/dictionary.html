@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Datawave Dictionary</h1>
+<form method="post" action="{{ url_for('main.dictionary') }}" class="query-form" onsubmit="return validateAuthSelection();">
+    <!-- Auths -->
+    <div class="form-group">
+        <label>Auths:</label>
+        <div class="button-container">
+            {% for auth in auths %}
+            <div class="button-item">
+                <button type="button" class="auth-button" data-auth="{{ auth }}">{{ auth }}</button>
+                <input type="hidden" name="auths" value="" class="auth-input">
+            </div>
+            {% endfor %}
+        </div>
+        <p id="authError" class='warning-header' style="display: none;">Please select at least one Auth option.</p>
+    </div>
+
+    <!-- Datatypes Filter-->
+    <div class="form-group">
+        <label for="filter">Filter dictionary by datatype(Optional):</label>
+        <input type="text" id="filter" name="filter" placeholder="datatype1,datatype2">
+    </div>
+        
+    <!-- Execute Query Button -->
+    <button type="submit">Execute Query</button>
+</form>
+
+{% if data %}
+<div class="table-container">
+    <h2>Results:</h2>
+    <table>
+        <thead>
+            <tr>
+                {% for header in data[0].keys() %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for key, value in row.items() %}
+                    <td data-label="{{ key }}">
+                        {{ value }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+<script>
+    document.querySelectorAll('.auth-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const input = this.nextElementSibling;
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                input.value = ''; // Empty hidden input value
+            } else {
+                this.classList.add('selected');
+                input.value = this.getAttribute('data-auth'); // Set hidden input value
+            }
+        });
+    });
+
+    function validateAuthSelection() {
+        const authInputs = document.querySelectorAll('.auth-input');
+        let atLeastOneSelected = false;
+        
+        authInputs.forEach(input => {
+            if (input.value) {
+                atLeastOneSelected = true;
+            }
+        });
+
+        if (!atLeastOneSelected) {
+            document.getElementById('authError').style.display = 'block';
+            return false; // Prevent form submission
+        } else {
+            document.getElementById('authError').style.display = 'none';
+            return true; // Allow form submission
+        }
+    }
+</script>
+{% endblock %}

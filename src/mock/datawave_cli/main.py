@@ -48,4 +48,14 @@ def query(url, ip, namespace, log_level, key, cert, query, query_name, auths, fi
 def authorization(**kwargs):
     with open('mock/datawave_cli/sample_authorization.json', 'r') as f:
         res = json.load(f)
-    return (res)
+    return res
+
+@main.command
+@common_options
+@click.option("--auths", type=str, required=True)
+@click.option("-d", "--data-types", type=str,
+              help="The datatypes to filter for. This CAN be a comma delineated list with no spaces.")
+def dictionary(**kwargs):
+    with open('mock/datawave_cli/sample_dict.json', 'r') as f:
+        res = json.load(f)
+    return res

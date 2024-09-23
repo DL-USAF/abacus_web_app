@@ -13,6 +13,7 @@
                     <a href="{{ url_for('main.index') }}">Home</a>
                     {% if oidc.user_loggedin %}
                     <a href="{{ url_for('main.upload') }}">Upload</a>
+                    <a href="{{ url_for('main.dictionary') }}">Dictionary</a>
                     <a href="{{ url_for('main.query') }}">Query</a>
                     {% endif %}
                 </div>

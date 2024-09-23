@@ -15,9 +15,11 @@ header {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
-    padding: 0 20px; 
+    padding: 0 20px;
+    flex-wrap: wrap; /* Ensures content wraps if space is tight */
 }
 
+/* Left, Center, and Right navbar containers */
 .navbar-left,
 .navbar-center,
 .navbar-right {
@@ -25,12 +27,14 @@ header {
     align-items: center;
 }
 
+/* Navbar links */
 .navbar-left a,
 .navbar-right a {
-    color: white; 
+    color: white;
     text-decoration: none;
-    margin-right: 15px; 
+    margin-right: 15px;
     padding: 1em;
+    white-space: nowrap; /* Prevents wrapping of links */
 }
 
 .navbar-left a:hover,
@@ -38,18 +42,23 @@ header {
     background-color: #3d918e;
 }
 
+/* Center the header and use flex-grow to allow shrinking of side content */
 .navbar-center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    flex: 1; 
+    flex-grow: 1;
     justify-content: center;
+    text-align: center;
 }
 
+/* Right-side navbar items */
 .navbar-right {
     justify-content: flex-end;
+    flex-grow: 1; /* Allow space for right-side items to shrink */
 }
 
+/* Warning Header */
 .warning-header {
     background-color: #c1666B;
     color: #fff;
@@ -58,6 +67,27 @@ header {
     font-weight: bold;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border: 1px solid #E65100;
+    white-space: nowrap; /* Prevent the warning text from wrapping */
+}
+
+/* Media Query for Portrait Mode (1080px wide or less) */
+@media screen and (max-width: 1080px) {
+    .navbar-left a,
+    .navbar-right a {
+        font-size: 0.85em; /* Reduce font size for smaller screens */
+        padding: 0.5em; /* Reduce padding to fit more items */
+        margin-right: 10px; /* Reduce margin between links */
+    }
+}
+
+/* Media Query for Larger Landscape Monitors */
+@media screen and (min-width: 1081px) {
+    .navbar-left a,
+    .navbar-right a {
+        font-size: 1em;
+        padding: 1em;
+        margin-right: 15px;
+    }
 }
 /*#endregion */
 
@@ -221,5 +251,100 @@ header {
 
 .query-form button[type="submit"]:hover {
     background-color: #555;
+}
+/*#endregion */
+
+/*#region Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+}
+
+table th {
+    background-color: #ddd;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+}
+
+table td {
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #e0e0e0;
+}
+
+/* Responsive table */
+@media screen and (max-width: 1080px) {
+    table, table th, table tr, table td {
+        display: block;        
+        width: 100%; 
+        box-sizing: border-box;
+    
+    }
+
+    table {
+        padding: 10px;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+        border: 2px solid #bbb;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    table td {
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    table td {
+        display: inline-block;
+        width: 100%;
+    }
+
+    table thead {
+        display: none;
+    }
 }
 /*#endregion */

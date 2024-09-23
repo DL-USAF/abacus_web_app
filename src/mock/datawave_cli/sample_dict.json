@@ -1,0 +1,802 @@
+[
+    {
+      "name": "SCHEDULE_DAYS",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "RUNTIME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Number"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NETWORK_ID",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_BIRTHDAY",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_GENDER",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EXTERNALS_TVRAGE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NETWORK_NAME_TOKEN",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": true,
+      "Normalized": false,
+      "Index Only": true,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "STATUS",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "SUMMARY",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "WEBCHANNEL_ID",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_COUNTRY_NAME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "ID",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "WEIGHT",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": [
+        "Number"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "TYPE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_IMAGE_ORIGINAL",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "AVERAGERUNTIME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_URL",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "LANGUAGE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NETWORK_COUNTRY_NAME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "SUMMARY_TOKEN",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": true,
+      "Normalized": false,
+      "Index Only": true,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_LINKS_SELF_HREF",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NETWORK_NAME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": true,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_CHARACTER_URL",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NAME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": true,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "WEBCHANNEL_NAME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "VISIBILITY",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_COUNTRY_CODE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_CHARACTER_ID",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "RATING_AVERAGE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EXTERNALS_THETVDB",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EXTERNALS_IMDB",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_DEATHDAY",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_CHARACTER_LINKS_SELF_HREF",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NETWORK_OFFICIALSITE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "LOAD_DATE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_COUNTRY_TIMEZONE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NETWORK_COUNTRY_CODE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "UPDATED",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "GENRES",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "URL",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": true,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NAME_TOKEN",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": true,
+      "Normalized": false,
+      "Index Only": true,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_CHARACTER_NAME_TOKEN",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": true,
+      "Normalized": false,
+      "Index Only": true,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "LINKS_SELF_HREF",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "ORIG_FILE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_ID",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_NAME_TOKEN",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": true,
+      "Normalized": false,
+      "Index Only": true,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_UPDATED",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_NAME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_CHARACTER_IMAGE_MEDIUM",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_SELF",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "NETWORK_COUNTRY_TIMEZONE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "ENDED",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "IMAGE_ORIGINAL",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_CHARACTER_NAME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": false,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "PREMIERED",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": [
+        "Unknown"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_CHARACTER_IMAGE_ORIGINAL",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "LINKS_PREVIOUSEPISODE_HREF",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "SCHEDULE_TIME",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_VOICE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "EMBEDDED_CAST_PERSON_IMAGE_MEDIUM",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "OFFICIALSITE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": true,
+      "Reversed Indexed": true,
+      "Types": [
+        "Text"
+      ],
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "WEBCHANNEL_OFFICIALSITE",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    },
+    {
+      "name": "IMAGE_MEDIUM",
+      "Data Type": "tvmaze",
+      "Forward Indexed": false,
+      "Reversed Indexed": false,
+      "Types": null,
+      "Tokenized": false,
+      "Normalized": false,
+      "Index Only": false,
+      "Descriptions": [],
+      "Last Updated": "19700101000000"
+    }
+  ]
