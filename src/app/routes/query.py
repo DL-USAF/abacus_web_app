@@ -1,38 +1,16 @@
 from uuid import uuid4
-
-from flask import render_template, Blueprint, redirect, url_for, request, flash
+from flask import render_template, request, flash, redirect, url_for
 from click.testing import CliRunner
 
-from app import oidc, routes_logger
+from app import routes_logger
 
 try:
     from datawave_cli.main import main as dwv_entry_point
 except Exception:
     from mock.datawave_cli.main import main as dwv_entry_point
 
-main = Blueprint('main', __name__)
 
-
-@main.route('/')
-def index():
-    return render_template('index.html')
-
-
-@main.route('/login')
-@oidc.require_login
-def login():
-    return redirect(url_for('main.dashboard'))
-
-
-@main.route('/dashboard')
-@oidc.require_login
-def dashboard():
-    return render_template('dashboard.html')
-
-
-@main.route('/query')
-@oidc.require_login
-def query():
+def route():
     cmd = 'authorization -c [PLACEHOLDER] -k [PLACEHOLDER]'.split(' ')
     whoami = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
     auths = whoami['proxiedUsers'][0]['auths']
@@ -40,9 +18,7 @@ def query():
     return render_template('query.html', auths=auths)
 
 
-@main.route('/query_results', methods=['GET', 'POST'])
-@oidc.require_login
-def query_results():
+def route_results():
     if request.method == 'POST':
         query_name = request.form.get('query_name') or uuid4()
         query_text = request.form.get('query')
@@ -72,15 +48,3 @@ def query_results():
         return render_template('query_result.html', output_location=output_location, output_html=output_html)
     else:
         return render_template('query_result.html', no_query=True)
-
-
-@main.route('/upload')
-@oidc.require_login
-def upload():
-    return render_template('upload.html')
-
-
-@main.route('/logout')
-def logout():
-    oidc.logout()
-    return redirect(url_for('main.index'))

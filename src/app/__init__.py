@@ -30,7 +30,8 @@ def inject_data():
 
 
 def create_app():
-    from app.routes import main
+    from app.main import main
 
     app.register_blueprint(main)
+
     return app
