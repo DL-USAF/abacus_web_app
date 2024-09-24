@@ -41,9 +41,10 @@ def dictionary():
     return routes.dictionary.route()
 
 
-@main.route('/upload')
+@main.route('/upload', methods=['GET', 'POST'])
 @oidc.require_login
 def upload():
+    if 
     return render_template('upload.html')
 
 

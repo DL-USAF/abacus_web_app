@@ -1,6 +1,53 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Upload Page</h1>
-    <p>This is where the upload form will be.</p>
+<h1>Upload Files to Datawave</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+    <div class="checkbox-container">
+      <input type="checkbox" id="enableEncryption" name="enableEncryption">
+      <label for="enableEncryption">Enable Encryption</label>
+    </div>
+    <div class="dropzone" id="dropzone">Drag and drop files here or click to upload</div>
+    <input type="file" name="files" id="fileInput" multiple style="display: none;" required>
+    <button type="submit" style="display: none;">
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadForm = document.getElementById('uploadForm');
+
+        dropzone.addEventListener('click', () => fileInput.click());
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('dragover');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            uploadForm.submit();
+        });
+
+        fileInput.addEventListener('change', () => {
+            uploadForm.submit();
+        });
+    });
+</script>
+
 {% endblock %}

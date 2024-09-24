@@ -348,3 +348,23 @@ table tr:hover {
     }
 }
 /*#endregion */
+.dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 5px;
+    padding: 50px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #007bff;
+    cursor: pointer;
+}
+.dropzone.dragover {
+    background-color: #e0e7ff;
+}
+.checkbox-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.checkbox-container label {
+    margin-left: 5px;
+}
