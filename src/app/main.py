@@ -44,8 +44,7 @@ def dictionary():
 @main.route('/upload', methods=['GET', 'POST'])
 @oidc.require_login
 def upload():
-    if 
-    return render_template('upload.html')
+    return routes.upload.route()
 
 
 @main.route('/logout')

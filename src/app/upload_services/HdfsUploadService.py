@@ -21,7 +21,5 @@ class HdfsUploadService(BaseUploadService):
         pass
 
     def verify_config(self):
-        if (self.AZURE_CONNECTION_STRING == ''):
-            upload_logger.critical("Azure Connection String missing, cannot use Azure upload...")
-        if (self.AZURE_CONTAINER_NAME == ''):
-            upload_logger.critical("Azure Container Name missing, cannot use Azure upload...")
+        if (self.HDFS_PROFILE == ''):
+            upload_logger.critical("HDFS Profile is missing, cannot use HDFS upload...")
