@@ -34,4 +34,4 @@ def load_upload_service() -> BaseUploadService:
         return upload_service_class("test")
     except (ImportError, AttributeError) as e:
         print(e)
-        raise ValueError(f"Unknown authentication service class: {upload_service}UploadService")
+        raise ValueError(f"Unknown upload service class: {upload_service}UploadService")
