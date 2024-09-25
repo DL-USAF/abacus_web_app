@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from app import routes_logger
 from app import upload_service
 
+
 def route():
     results = []
     if request.method == 'POST':
@@ -17,7 +18,8 @@ def route():
                     results.append(f'File successfully uploaded: {clean_filename}')
                 else:
                     results.append(f'File type not allowed: {file.filename}')
-            except:
+            except Exception as e:
                 results.append(f"Failed to upload file: {file.filename}")
+                routes_logger.error(e)
     return render_template('upload.html', results=results, encryption_enabled=upload_service.encryption_enabled,
                            upload_service_name=type(upload_service).__name__)

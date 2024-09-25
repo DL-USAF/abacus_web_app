@@ -15,14 +15,15 @@ class BaseUploadService(ABC):
 
     def verify(self, filename: str):
         return re.search(self.EXT_REGEX, filename)
-    
+
     @abstractmethod
     def upload(self, file: FileStorage, filename: str):
         pass
-    
+
     @abstractmethod
     def verify_config(self):
         pass
+
 
 def load_upload_service() -> BaseUploadService:
     upload_service = os.getenv('UPLOAD_SERVICE', 'Mock')

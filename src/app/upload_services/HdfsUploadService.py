@@ -16,9 +16,8 @@ class HdfsUploadService(BaseUploadService):
         self.hdfs_client = Config().get_client(self.HDFS_PROFILE)
 
     def upload(self, file: FileStorage, filename: str):
-        self.hdfs_client.list('/')
+        upload_logger.info(self.hdfs_client.list('/'))
         self.hdfs_client.write(filename, file)
-        pass
 
     def verify_config(self):
         if (self.HDFS_PROFILE == ''):

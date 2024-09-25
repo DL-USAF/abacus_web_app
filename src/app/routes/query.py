@@ -8,7 +8,6 @@ from hdfs import InsecureClient
 from werkzeug.utils import secure_filename
 
 
-
 from app import routes_logger
 
 try:
