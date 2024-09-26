@@ -4,12 +4,63 @@
 {% if no_query %}
 <h1>No QUERY RAN</h1>
 {% else %}
-<h1>Query Ran</h1>
-<span>
-    Placeholder for query results grabbing from {{ output_location }}
-</span>
-<div>
-    {{ output_html | safe}}
+<h1>Query Results</h1>
+<div class="metadata">
+    <h3>Query Metadata</h3>
+    {% for key, value in metadata.items() %}
+        <div class="metadata-box">
+            <div class="metadata-box-left"><strong>{{ key }}</strong></div>
+            <div class="metadata-box-right">{{ value }}</div>
+        </div>
+    {% endfor %}
+</div>
+<h2>Results</h2>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <!-- Render the ordered columns before None -->
+                {% set start_columns = column_order[:column_order.index(None)] %}
+                {% for column in start_columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+
+                <!-- Dynamically calculate and render the unordered columns -->
+                {% set all_keys = events[0].keys() if events else [] %}
+                {% set ordered_keys = column_order | select('!=', None) | list %}
+                {% set unordered_keys = all_keys | reject('in', ordered_keys) | list %}
+                {% for column in unordered_keys %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+
+                <!-- Render the ordered columns after None -->
+                {% set end_columns = column_order[column_order.index(None) + 1:] %}
+                {% for column in end_columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <!-- Render the ordered columns before None -->
+                {% for column in start_columns %}
+                    <td data-label="{{ column }}">{{ event[column] if column in event else '' }}</td>
+                {% endfor %}
+
+                <!-- Render the unordered columns -->
+                {% for column in unordered_keys %}
+                    <td data-label="{{ column }}">{{ event[column] if column in event else '' }}</td>
+                {% endfor %}
+
+                <!-- Render the ordered columns after None -->
+                {% for column in end_columns %}
+                    <td data-label="{{ column }}">{{ event[column] if column in event else '' }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endif %}
 {% endblock %}

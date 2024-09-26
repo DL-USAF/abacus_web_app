@@ -50,8 +50,8 @@ header {
 .navbar {
     position: relative;
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     padding: 0 20px;
     flex-wrap: wrap; /* Ensures content wraps if space is tight */
 }
@@ -264,7 +264,7 @@ header {
 }
 
 .collapsible-section {
-    display: none; 
+    display: none;
     margin-top: 15px;
 }
 
@@ -290,6 +290,42 @@ header {
     background-color: #555;
 }
 /*#endregion */
+
+/*#region Metadata */
+.metadata {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px 200px;
+    margin-bottom: 20px;
+    background-color: #CFC9C2;
+}
+
+.metadata h3 {
+    text-align: center;
+}
+
+.metadata-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.metadata-box-left, .metadata-box-right {
+    align-self: center;
+}
+
+.metadata-box-left {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+    min-width: 40%;
+}
+
+.metadata-box-right {
+    flex: 2; /* We want this one to have double the size of the left side if possible*/
+    text-align: left;
+}
+/*#endregion
 
 /*#region Table */
 table {
@@ -337,10 +373,10 @@ table tr:hover {
 /* Responsive table */
 @media screen and (max-width: 1080px) {
     table, table th, table tr, table td {
-        display: block;        
-        width: 100%; 
+        display: block;
+        width: 100%;
         box-sizing: border-box;
-    
+
     }
 
     table {
