@@ -14,9 +14,12 @@ image:
 
 env: 
   auth_service: KeycloakAuthService
+  upload_service: Mock
 
 config:
   name: abacus-web-app-config
-  realm: external
-  client_id: external-client
-  client_secret:
+  keycloak:
+    base_url: https://keycloak-eval.opalacceptance.dso.mil
+    realm: datawave
+    client_id: external-client
+    client_secret: <secret-goes-here>

@@ -1,1 +1,1 @@
-from . import dictionary, query
+from . import dictionary, query, upload

@@ -2,6 +2,7 @@ from uuid import uuid4
 from flask import render_template, request, flash, redirect, url_for, jsonify
 from click.testing import CliRunner
 
+
 from app import routes_logger
 
 try:
@@ -74,7 +75,7 @@ def route_results():
             return jsonify(output)
 
         COLUMN_ORDER = ['NAME', 'VISIBILITY']  # Starting columns
-        COLUMN_ORDER += [None]  # Placeholder for unordered columns, 
+        COLUMN_ORDER += [None]  # Placeholder for unordered columns,
         COLUMN_ORDER += ['TERM_COUNT', 'LOAD_DATE', 'ORIG_FILE', 'RECORD_ID']  # Ending columns
 
         return render_template('query_result.html',

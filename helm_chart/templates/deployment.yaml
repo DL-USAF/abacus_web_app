@@ -31,6 +31,8 @@ spec:
           env:
             - name: AUTH_SERVICE
               value: {{ .Values.env.auth_service }}
+            - name: UPLOAD_SERVICE
+              value: {{ .Values.env.upload_service }}
           volumeMounts:
             - name: config
               mountPath: /configs
