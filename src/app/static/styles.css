@@ -5,6 +5,43 @@ body {
     background-color: #E4DFDA;
 }
 
+.disabled {
+    opacity: 0.5;
+}
+
+.tooltip {
+position: relative;
+display: inline-block;
+}
+
+.tooltip .tooltiptext {
+visibility: hidden;
+width: 120px;
+background-color: #555;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+z-index: 1;
+bottom: 125%;
+left: 50%;
+margin-left: -60px;
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+border-width: 5px;
+border-style: solid;
+border-color: #555 transparent transparent transparent;
+}
+
 /*#region Navbar */
 header {
     background-color: #48A9A6;
@@ -346,5 +383,35 @@ table tr:hover {
     table thead {
         display: none;
     }
+}
+/*#endregion */
+
+/*#region Upload  */
+.dropzone {
+    border: 2px dashed #48A9A6;
+    border-radius: 5px;
+    padding: 50px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #48A9A6;
+    cursor: pointer;
+}
+.dropzone.dragover {
+    background-color: #e0e7ff;
+}
+.checkbox-container {
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.checkbox-container label {
+    margin-left: 5px;
+}
+
+.file-list {
+    text-align: left;
+}
+
+.file-list.failed {
+    color:#721c24
 }
 /*#endregion */

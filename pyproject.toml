@@ -15,7 +15,9 @@ dependencies = [
     "flask_oidc",
     "requests",
     "pandas",
-    "click"
+    "click",
+    "azure-storage-blob",
+    "hdfs"
 ]
 
 [project.urls]

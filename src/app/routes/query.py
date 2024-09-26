@@ -1,6 +1,8 @@
 from uuid import uuid4
+
 from flask import render_template, request, flash, redirect, url_for
 from click.testing import CliRunner
+
 
 from app import routes_logger
 

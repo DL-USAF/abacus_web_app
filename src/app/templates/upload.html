@@ -1,6 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Upload Page</h1>
-    <p>This is where the upload form will be.</p>
+<h1>Upload Files to Datawave</h1>
+<form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+  {% if encryption_enabled %}
+  <div class="checkbox-container" title="Encrypt filename and content of file before uploading.">
+    {% if encryption_selected %}
+    <input type="checkbox" id="enableEncryption" name="enableEncryption" checked>
+    {% else %}
+    <input type="checkbox" id="enableEncryption" name="enableEncryption">
+    {% endif %}
+    <label for="enableEncryption" class="">Enable Encryption</label>
+  </div>
+  {% else %}
+  <div class="checkbox-container" title="{{ upload_service_name }} does not allow encryption.">
+    <input type="checkbox" id="enableEncryption" name="enableEncryption" disabled>
+    <label for="enableEncryption" class="disabled">Enable Encryption</label>
+  </div>
+  {% endif %}
+  <div class="dropzone" id="dropzone">Drag and drop files here or click to upload</div>
+  <input type="file" name="files" id="fileInput" multiple style="display: none;" required>
+  <button type="submit" style="display: none;"></button>
+</form>
+
+{% if results %}
+<div>
+  <h2>Upload Results</h2>
+  <ul>
+    {% for result in results %}
+      <li class="file-list">{{ result }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadForm = document.getElementById('uploadForm');
+
+        dropzone.addEventListener('click', () => fileInput.click());
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('dragover');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            uploadForm.submit();
+        });
+
+        fileInput.addEventListener('change', () => {
+            uploadForm.submit();
+        });
+    });
+</script>
+
 {% endblock %}
