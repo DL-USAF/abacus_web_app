@@ -12,6 +12,7 @@ except Exception:
 
 
 def route():
+    # TODO: Correctly reference certs
     cmd = 'authorization -c [PLACEHOLDER] -k [PLACEHOLDER]'.split(' ')
     whoami = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
     auths = whoami['proxiedUsers'][0]['auths']
@@ -43,6 +44,8 @@ def route_results():
     data_type = arg_source.get('data_type')
     decode_raw_data = bool(arg_source.get('decode_raw_data'))
 
+    # TODO: Add the rest of the CLI options for query
+
     # Users must provide Auths to run a query
     selected_auths = [auth for auth in arg_source.getlist('auths') if auth]
     if not selected_auths:
@@ -58,6 +61,7 @@ def route_results():
     elif request.method == 'GET':
         # GET requests execute the query
         output_location = f'/tmp/{query_name}/results.json'
+        # TODO: Correctly reference certs
         cmd = [
             'query',
             '-c', 'PLACEHOLDER', '-k', 'PLACEHOLDER',

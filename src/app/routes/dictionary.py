@@ -10,6 +10,7 @@ except Exception:
 
 
 def route():
+    # TODO: Correctly reference certs
     cmd = 'authorization -c [PLACEHOLDER] -k [PLACEHOLDER]'.split(' ')
     whoami = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
     auths = whoami['proxiedUsers'][0]['auths']
@@ -21,6 +22,7 @@ def route():
         selected_auths = [auth for auth in request.form.getlist('auths') if auth]
         datatypes = request.form.get('filter').replace(' ', '')
         cmd = 'dictionary'
+        # TODO: Correctly reference certs
         cmd += f' -c PLACEHOLDER -k PLACEHOLDER'
         cmd += f' --auths {",".join(selected_auths)}'
         cmd += f' -d {datatypes}' if datatypes else ''
