@@ -14,13 +14,7 @@ def index():
 @main.route('/login')
 @oidc.require_login
 def login():
-    return redirect(url_for('main.dashboard'))
-
-
-@main.route('/dashboard')
-@oidc.require_login
-def dashboard():
-    return render_template('dashboard.html')
+    return redirect(url_for('main.index'))
 
 
 @main.route('/query')
@@ -30,6 +24,7 @@ def query():
 
 
 @main.route('/query_results', methods=['GET', 'POST'])
+@main.route('/query_results.json', methods=['GET', 'POST'], endpoint='query_results_json')
 @oidc.require_login
 def query_results():
     return routes.query.route_results()

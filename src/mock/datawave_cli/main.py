@@ -1,5 +1,6 @@
 import click
 import json
+from types import SimpleNamespace
 
 
 @click.group
@@ -29,18 +30,10 @@ def common_options(f):
 @click.option("-o", "--output", type=str)
 @click.option("--html", is_flag=True)
 @click.option("-d", "--decode-raw", is_flag=True)
-def query(url, ip, namespace, log_level, key, cert, query, query_name, auths, filter, output, html, decode_raw):
-    print('in query')
-    return f"""
-    <ul style="list-style-type: none;">
-        <li><strong>Query Name:</strong> {query_name}</li>
-        <li><strong>Query Text:</strong> {query}</li>
-        <li><strong>Selected Auths:</strong> {auths}</li>
-        <li><strong>Data Type:</strong> {"All" if not filter else filter}</li>
-        <li><strong>Output Location:</strong> {output}</li>
-        <li><strong>Decode Raw Data:</strong> {decode_raw}</li>
-    </ul>
-    """
+def query(**kwargs):
+    with open('mock/datawave_cli/sample_query.json', 'r') as f:
+        res = json.load(f)
+    return res
 
 
 @main.command
