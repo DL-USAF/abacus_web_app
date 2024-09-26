@@ -21,7 +21,7 @@ def route():
 
 
 def route_results():
-    # We need to handle our args in a few different ways, first and formost if they are passed as args in the url
+    # We need to handle our args in a few different ways, first and foremost if they are passed as args in the url
     arg_source = request.args.copy()
 
     # Next, if we're given a form we should use that
