@@ -10,7 +10,7 @@ from . import upload_logger
 
 class BaseUploadService(ABC):
     def __init__(self, datatype: str):
-        self.EXT_REGEX = os.environ.get("EXT_REGEX", ".json")
+        self.EXT_REGEX = os.environ.get("EXT_REGEX", "json$")
         self.datatype = datatype
         self.encryption_enabled = False
         pass

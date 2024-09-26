@@ -5,7 +5,11 @@
 <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
   {% if encryption_enabled %}
   <div class="checkbox-container" title="Encrypt filename and content of file before uploading.">
+    {% if encryption_selected %}
+    <input type="checkbox" id="enableEncryption" name="enableEncryption" checked>
+    {% else %}
     <input type="checkbox" id="enableEncryption" name="enableEncryption">
+    {% endif %}
     <label for="enableEncryption" class="">Enable Encryption</label>
   </div>
   {% else %}

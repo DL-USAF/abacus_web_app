@@ -7,8 +7,9 @@ from app import upload_service
 
 def route():
     results = []
+    enable_encryption_selected = 'enableEncryption' in request.form
+    print(enable_encryption_selected)
     if request.method == 'POST':
-        enable_encryption = 'enableEncryption' in request.form
         # TODO currently, the enable encryption variable is not utilized
         # I will create a story to implement this with dynamic encryption algorithms
         files = request.files.getlist('files')
@@ -23,5 +24,7 @@ def route():
             except Exception as e:
                 results.append(f"Failed to upload file: {file.filename}")
                 routes_logger.error(e)
-    return render_template('upload.html', results=results, encryption_enabled=upload_service.encryption_enabled,
-                           upload_service_name=type(upload_service).__name__)
+    return render_template('upload.html',
+                           results=results, encryption_enabled=upload_service.encryption_enabled,
+                           upload_service_name=type(upload_service).__name__,
+                           encryption_selected=enable_encryption_selected)
