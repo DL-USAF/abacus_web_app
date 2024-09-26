@@ -384,8 +384,9 @@ table tr:hover {
         display: none;
     }
 }
+/*#endregion */
 
-/* Upload  */
+/*#region Upload  */
 .dropzone {
     border: 2px dashed #48A9A6;
     border-radius: 5px;
@@ -413,3 +414,4 @@ table tr:hover {
 .file-list.failed {
     color:#721c24
 }
+/*#endregion */

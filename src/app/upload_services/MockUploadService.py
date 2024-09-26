@@ -12,8 +12,6 @@ class MockUploadService(BaseUploadService):
     def __init__(self, datatype):
         upload_logger.info("Upload Pre-Pipeline.")
         super().__init__(datatype)
-        self.EXT_REGEX = "json"
-        self.encryption_enabled = True
 
     def upload(self, file: FileStorage, filename: str):
         upload_logger.info(f"File to upload: {filename}")

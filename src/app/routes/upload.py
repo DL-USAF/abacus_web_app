@@ -9,6 +9,8 @@ def route():
     results = []
     if request.method == 'POST':
         enable_encryption = 'enableEncryption' in request.form
+        # TODO currently, the enable encryption variable is not utilized
+        # I will create a story to implement this with dynamic encryption algorithms
         files = request.files.getlist('files')
         for file in files:
             clean_filename = secure_filename(file.filename)
