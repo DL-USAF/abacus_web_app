@@ -14,7 +14,11 @@ image:
 
 env: 
   auth_service: KeycloakAuthService
-  upload_service: Mock
+  upload_service: Hdfs
+  hdfs:
+    enabled: True
+    profile: dev
+    config: /configs/hdfs_config.conf
 
 config:
   name: abacus-web-app-config
@@ -22,4 +26,8 @@ config:
     base_url: https://keycloak-eval.opalacceptance.dso.mil
     realm: datawave
     client_id: external-client
-    client_secret: <secret-goes-here>
+    client_secret: jxNx0kaiSyfs6xSviHH4tXInn0pdswsN
+  hdfs:
+    client: InsecureClient
+    url: http://hdfs-nn.datawave.svc.cluster.local:9870
+    user: datawave

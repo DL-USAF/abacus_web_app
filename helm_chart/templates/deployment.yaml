@@ -33,6 +33,12 @@ spec:
               value: {{ .Values.env.auth_service }}
             - name: UPLOAD_SERVICE
               value: {{ .Values.env.upload_service }}
+            {{ if .Values.env.hdfs.enabled }}
+            - name: HDFSCLI_CONFIG
+              value: {{ .Values.env.hdfs.config }}
+            - name: HDFS_PROFILE
+              value: {{ .Values.env.hdfs.profile }}
+            {{ end }}
           volumeMounts:
             - name: config
               mountPath: /configs

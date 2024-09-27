@@ -3,6 +3,18 @@
 {% block content %}
 <h1>Upload Files to Datawave</h1>
 <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+  <div class="dropdown">
+    <label for="datatype">Datatype:</label>
+      <select name="datatype" id="datatype">
+        {% for dt in datatypes %}
+        {% if dt == datatype %}
+        <option value="{{ dt }}" selected>{{ dt }}</option>
+        {% else %}
+        <option value="{{ dt }}">{{ dt }}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+  </div>
   {% if encryption_enabled %}
   <div class="checkbox-container" title="Encrypt filename and content of file before uploading.">
     {% if encryption_selected %}

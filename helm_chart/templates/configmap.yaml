@@ -25,3 +25,14 @@ data:
         }
         }
     }
+  
+  {{ if .Values.env.hdfs.enabled }}
+  hdfs_config.conf: |
+    [global]
+    default.alias = {{ .Values.env.hdfs.profile }}
+
+    [{{ .Values.env.hdfs.profile }}.alias]
+    client = {{ .Values.config.hdfs.client }}
+    url = {{ .Values.config.hdfs.url }}
+    user = {{ .Values.config.hdfs.user }}
+  {{ end }}

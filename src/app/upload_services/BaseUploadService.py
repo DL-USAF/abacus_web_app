@@ -9,9 +9,8 @@ from . import upload_logger
 
 
 class BaseUploadService(ABC):
-    def __init__(self, datatype: str):
+    def __init__(self):
         self.EXT_REGEX = os.environ.get("EXT_REGEX", "json$")
-        self.datatype = datatype
         self.encryption_enabled = False
         pass
 
@@ -19,11 +18,15 @@ class BaseUploadService(ABC):
         return bool(re.search(self.EXT_REGEX, filename))
 
     @abstractmethod
-    def upload(self, file: FileStorage, filename: str):
+    def upload(self, file: FileStorage, filename: str, datatype: str):
         pass
 
     @abstractmethod
     def verify_config(self):
+        pass
+
+    @abstractmethod
+    def get_list_of_datatypes(self):
         pass
 
 
@@ -33,7 +36,7 @@ def load_upload_service() -> BaseUploadService:
     try:
         module = importlib.import_module(f'app.upload_services.{upload_service}UploadService')
         upload_service_class = getattr(module, f"{upload_service}UploadService")
-        return upload_service_class("test")
+        return upload_service_class()
     except (ImportError, AttributeError) as e:
         upload_logger.error(e)
         raise ValueError(f"Unknown upload service class: {upload_service}UploadService")

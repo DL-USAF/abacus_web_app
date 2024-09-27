@@ -9,14 +9,14 @@ from . import upload_logger
 
 
 class AzureBlobStorageUploadService(BaseUploadService):
-    def __init__(self, datatype):
+    def __init__(self):
         upload_logger.info("Upload Pre-Pipeline.")
-        super().__init__(datatype)
+        super().__init__()
         self.AZURE_CONNECTION_STRING = os.environ.get("AZURE_CONNECTION_STRING", '')
         self.AZURE_CONTAINER_NAME = os.environ.get("AZURE_CONTAINER_NAME", '')
         self.blob_service_client = BlobServiceClient.from_connection_string(self.AZURE_CONNECTION_STRING)
 
-    def upload(self, file: FileStorage, filename: str):
+    def upload(self, file: FileStorage, filename: str, datatype: str):
         blob_client = self.blob_service_client.get_blob_client(container=self.AZURE_CONTAINER_NAME, blob=filename)
         blob_client.upload_blob(file)
         pass
@@ -26,3 +26,6 @@ class AzureBlobStorageUploadService(BaseUploadService):
             upload_logger.critical("Azure Connection String missing, cannot use Azure upload...")
         if (self.AZURE_CONTAINER_NAME == ''):
             upload_logger.critical("Azure Container Name missing, cannot use Azure upload...")
+
+    def get_list_of_datatypes(self):
+        return ["1", "2"]
