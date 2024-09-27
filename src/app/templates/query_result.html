@@ -7,60 +7,166 @@
 <h1>Query Results</h1>
 <div class="metadata">
     <h3>Query Metadata</h3>
-    {% for key, value in metadata.items() %}
+    {% for key, value in data['metadata'].items() %}
         <div class="metadata-box">
             <div class="metadata-box-left"><strong>{{ key }}</strong></div>
             <div class="metadata-box-right">{{ value }}</div>
         </div>
     {% endfor %}
 </div>
-<h2>Results</h2>
+<div style="display: flex; justify-content: space-between;">
+    <button id="download-btn" class="auth-button" style="margin-right: 10px">Download Results</button>
+    {% if 'RAWDATA' in column_order %}
+        <button id="download-all-btn" class="auth-button">Download All Raw Data</button>
+    {% endif %}
+</div>
 <div class="table-container">
     <table>
         <thead>
             <tr>
-                <!-- Render the ordered columns before None -->
-                {% set start_columns = column_order[:column_order.index(None)] %}
-                {% for column in start_columns %}
-                    <th>{{ column }}</th>
-                {% endfor %}
-
-                <!-- Dynamically calculate and render the unordered columns -->
-                {% set all_keys = events[0].keys() if events else [] %}
-                {% set ordered_keys = column_order | select('!=', None) | list %}
-                {% set unordered_keys = all_keys | reject('in', ordered_keys) | list %}
-                {% for column in unordered_keys %}
-                    <th>{{ column }}</th>
-                {% endfor %}
-
-                <!-- Render the ordered columns after None -->
-                {% set end_columns = column_order[column_order.index(None) + 1:] %}
-                {% for column in end_columns %}
-                    <th>{{ column }}</th>
+                {% for column in column_order %}
+                <th>{{ column }}</th>
                 {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% for event in events %}
-            <tr>
-                <!-- Render the ordered columns before None -->
-                {% for column in start_columns %}
-                    <td data-label="{{ column }}">{{ event[column] if column in event else '' }}</td>
-                {% endfor %}
-
-                <!-- Render the unordered columns -->
-                {% for column in unordered_keys %}
-                    <td data-label="{{ column }}">{{ event[column] if column in event else '' }}</td>
-                {% endfor %}
-
-                <!-- Render the ordered columns after None -->
-                {% for column in end_columns %}
-                    <td data-label="{{ column }}">{{ event[column] if column in event else '' }}</td>
-                {% endfor %}
-            </tr>
+            {% for event in data['events'] %}
+                {% set ns = namespace(rawdata_found=false,index=loop.index) %}
+                <tr>
+                    {% for col in event %}
+                        {% if col.startswith('RAWDATA_') %}
+                            {% set ns.rawdata_found = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for column in column_order %}
+                        <td data-label="{{ column }}">
+                            {% if column == 'RAWDATA' and ns.rawdata_found %}
+                                <button class="download-event-btn auth-button" data-event="{{ ns.index - 1 }}">Download All Event Raw Data Parquets</button>
+                            {% elif column in event %}
+                                {{ event[column] }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    // Injected data from Flask (Jinja) into JavaScript as a JSON object
+    const data = JSON.parse('{{ data | tojson }}');
+
+    document.getElementById('download-btn').addEventListener('click', function () {
+            // Convert the data to a JSON string
+            const jsonString = JSON.stringify(data, null, 2);  // 'null, 2' formats it with indentation
+
+            // Create a blob with the JSON content and set the MIME type to application/json
+            const blob = new Blob([jsonString], { type: 'application/json' });
+
+            // Create a temporary link element
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'results.json';  // Set the file name
+            document.body.appendChild(a);  // Append the link to the body (it won't be visible)
+            a.click();  // Trigger the download by simulating a click
+            document.body.removeChild(a);  // Clean up and remove the link element
+        });
+
+    // Add an event listener to each download link
+    document.querySelectorAll('.download-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();  // Prevent the default link behavior
+
+            const rawData = this.getAttribute('data-rawdata');  // Get the base64-encoded data
+            const columnName = this.getAttribute('data-column');  // Get the column name
+
+            // Make a POST request to the /download_raw endpoint to initiate the download
+            fetch(`/download_raw/${columnName}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ raw_data: rawData })  // Send the raw data to the backend
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();  // Convert the response to a blob (the file)
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(blob => {
+                // Create a temporary link element to download the file
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = `${columnName}.parquet`;  // Set the file name
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);  // Clean up the object URL
+            })
+            .catch(error => {
+                console.error('Error during file download:', error);
+            });
+        });
+    });
+
+    function downloadRawData(events, zipName) {
+        fetch('/download_raw', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ events: events, zip_name: zipName }) // Send the relevant events data and zip name
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            // Create a download link and trigger download
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = zipName;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error('Download failed:', error));
+    }
+
+    // Handle download of all raw data
+    document.getElementById('download-all-btn').addEventListener('click', function () {
+        const events = JSON.parse('{{ data["events"] | tojson }}');
+        downloadRawData(events, 'raw_data.zip');  // Use default name for downloading all raw data
+    });
+
+    // Handle download of raw data for individual events
+    document.querySelectorAll('.download-event-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const eventIndex = this.getAttribute('data-event');
+            const events = JSON.parse('{{ data["events"] | tojson }}');
+            const event = events[eventIndex];  // Get the specific event
+            /*
+            We need a way to uniquely name each of our events. Conveniently dwv's ORIG_FILE provides that!
+            The field is of the form [file_name]|[event_number]|[upload_number].
+            upload_number is in case a file with the same name but different content was uploaded multiple
+            times. Most of the time it's going to be 0 so we are not going to include it.
+            */
+            const origFile = event['ORIG_FILE'];  // Get the ORIG_FILE field
+            console.log(event)
+            console.log(origFile)
+            // Extract the file name and event number from ORIG_FILE
+            const [fileName, eventNumber, ...rest] = origFile.split('|');
+            const cleanedFileName = fileName.replace('.json', '');  // Remove '.json'
+            const zipName = `${cleanedFileName}_${eventNumber}.zip`;  // Construct the zip file name
+
+            // Download only the raw data for this event
+            downloadRawData([event], zipName);
+        });
+    });
+</script>
 {% endif %}
 {% endblock %}

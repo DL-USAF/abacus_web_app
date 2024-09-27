@@ -42,6 +42,11 @@ def upload():
     return routes.upload.route()
 
 
+@main.route('/download_raw', methods=['POST'])
+def download_raw():
+    return routes.query.download_raw()
+
+
 @main.route('/logout')
 def logout():
     oidc.logout()
