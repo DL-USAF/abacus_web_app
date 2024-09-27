@@ -1,5 +1,6 @@
 import click
 import json
+from pathlib import Path
 from types import SimpleNamespace
 
 
@@ -31,7 +32,8 @@ def common_options(f):
 @click.option("--html", is_flag=True)
 @click.option("-d", "--decode-raw", is_flag=True)
 def query(**kwargs):
-    with open('mock/datawave_cli/sample_query.json', 'r') as f:
+    parent_path = Path(__file__).parent
+    with open(parent_path.joinpath('sample_query.json'), 'r') as f:
         res = json.load(f)
     return res
 
@@ -39,7 +41,8 @@ def query(**kwargs):
 @main.command
 @common_options
 def authorization(**kwargs):
-    with open('mock/datawave_cli/sample_authorization.json', 'r') as f:
+    parent_path = Path(__file__).parent
+    with open(parent_path.joinpath("sample_authorization.json"), 'r') as f:
         res = json.load(f)
     return res
 
@@ -49,6 +52,7 @@ def authorization(**kwargs):
 @click.option("--auths", type=str, required=True)
 @click.option("-d", "--data-types", type=str)
 def dictionary(**kwargs):
-    with open('mock/datawave_cli/sample_dict.json', 'r') as f:
+    parent_path = Path(__file__).parent
+    with open(parent_path.joinpath('sample_dict.json'), 'r') as f:
         res = json.load(f)
     return res

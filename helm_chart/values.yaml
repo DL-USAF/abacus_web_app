@@ -22,4 +22,4 @@ config:
     base_url: https://keycloak-eval.opalacceptance.dso.mil
     realm: datawave
     client_id: external-client
-    client_secret: <secret-goes-here>
+    client_secret: jxNx0kaiSyfs6xSviHH4tXInn0pdswsN

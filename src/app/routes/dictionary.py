@@ -12,7 +12,8 @@ except Exception:
 def route():
     # TODO: Correctly reference certs
     cmd = 'authorization -c [PLACEHOLDER] -k [PLACEHOLDER]'.split(' ')
-    whoami = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
+    runner = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False)
+    whoami = runner.return_value
     auths = whoami['proxiedUsers'][0]['auths']
 
     data = ''
