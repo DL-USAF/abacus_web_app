@@ -41,7 +41,7 @@
                     {% for column in column_order %}
                         <td data-label="{{ column }}">
                             {% if column == 'RAWDATA' and ns.rawdata_found %}
-                                <button class="download-event-btn auth-button" data-event="{{ ns.index - 1 }}">Download All Event Raw Data Parquets</button>
+                                <button class="download-event-btn auth-button" data-event="{{ ns.index - 1 }}">Download All Raw Data for Event</button>
                             {% elif column in event %}
                                 {{ event[column] }}
                             {% else %}

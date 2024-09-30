@@ -134,4 +134,3 @@ def download_raw():
     # Apparently we need to reset the buffer to 0...
     zip_buffer.seek(0)
     return send_file(zip_buffer, as_attachment=True, download_name=zip_name, mimetype='application/zip')
-
