@@ -75,45 +75,6 @@
             document.body.removeChild(a);  // Clean up and remove the link element
         });
 
-    // Add an event listener to each download link
-    document.querySelectorAll('.download-link').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();  // Prevent the default link behavior
-
-            const rawData = this.getAttribute('data-rawdata');  // Get the base64-encoded data
-            const columnName = this.getAttribute('data-column');  // Get the column name
-
-            // Make a POST request to the /download_raw endpoint to initiate the download
-            fetch(`/download_raw/${columnName}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ raw_data: rawData })  // Send the raw data to the backend
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.blob();  // Convert the response to a blob (the file)
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(blob => {
-                // Create a temporary link element to download the file
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = `${columnName}.parquet`;  // Set the file name
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);  // Clean up the object URL
-            })
-            .catch(error => {
-                console.error('Error during file download:', error);
-            });
-        });
-    });
-
     function downloadRawData(events, zipName) {
         fetch('/download_raw', {
             method: 'POST',
@@ -156,8 +117,7 @@
             times. Most of the time it's going to be 0 so we are not going to include it.
             */
             const origFile = event['ORIG_FILE'];  // Get the ORIG_FILE field
-            console.log(event)
-            console.log(origFile)
+
             // Extract the file name and event number from ORIG_FILE
             const [fileName, eventNumber, ...rest] = origFile.split('|');
             const cleanedFileName = fileName.replace('.json', '');  // Remove '.json'

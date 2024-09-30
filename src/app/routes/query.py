@@ -71,8 +71,7 @@ def route_results():
             '-q', query,
             '--query-name', f'{query_name}',
             '--auths', ",".join(selected_auths),
-            f'-f {data_type}' if data_type else '',
-            f'{"-d" if decode_raw_data else ""}'
+            f'-f {data_type}' if data_type else ''
         ]
         cmd = list(filter(lambda item: item, cmd))
         output = CliRunner().invoke(dwv_entry_point, cmd, standalone_mode=False).return_value
