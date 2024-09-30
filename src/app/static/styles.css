@@ -328,6 +328,11 @@ header {
 /*#endregion
 
 /*#region Table */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Allow horizontal scrolling */
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
